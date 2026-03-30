@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Hea");
+            
             StartCoroutine(DisableHitbox(0.8f));
         }
     }

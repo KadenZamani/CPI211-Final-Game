@@ -1,8 +1,9 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using static UnityEditor.Progress;
 
 public enum MoveState { Idle, Walking, Sprinting }
-public enum ActionState { None, Blocking, Attacking }
+public enum ActionState { None, Blocking, Attacking, GettingHit }
 
 public class CharacterStateController : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class CharacterStateController : MonoBehaviour
 
     public ThirdPersonController ScriptReference;
     private bool isPerformingAction = false;
+    private bool isGettingHit = false;
     public bool attackHitboxActive = false;
+    private int playerHealth = 100;
+    private int damageDealtToPlayer = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +27,7 @@ public class CharacterStateController : MonoBehaviour
     void HandleInput()
     {
         // 1. Determine Action First
+        if (isGettingHit) return;
         if (isPerformingAction) return;
         if (Input.GetMouseButton(1)) currentAction = ActionState.Blocking;
         else if (Input.GetMouseButtonDown(0))
@@ -64,8 +69,9 @@ public class CharacterStateController : MonoBehaviour
         ExecuteMovementLogic();
         ExecuteActionLogic();
         //UpdateAnimator();
-        Debug.Log("Current Move State: " + currentMove.ToString());
+       // Debug.Log("Current Move State: " + currentMove.ToString());
         Debug.Log("Current Action State: " + currentAction.ToString());
+        Debug.Log("Health: " + playerHealth);
     }
 
     IEnumerator PerformAttack(float duration)
@@ -83,6 +89,36 @@ public class CharacterStateController : MonoBehaviour
         currentAction = ActionState.None;
         isPerformingAction = false;
         //anim.SetInteger("ActionState", (int)currentAction);
+    }
+
+    IEnumerator GetHit(float duration)
+    {
+        isGettingHit = true;
+        currentAction = ActionState.GettingHit;
+
+
+        //anim.SetInteger("ActionState", (int)currentAction);
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(duration);
+
+
+        currentAction = ActionState.None;
+        isGettingHit = false;
+        //anim.SetInteger("ActionState", (int)currentAction);
+    }
+
+    //detecting enemy attack hitbox
+    void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.CompareTag("EnemyAttack") && !isGettingHit && currentAction != ActionState.Blocking) 
+        {
+            EnemyAttack enemyScript = other.gameObject.GetComponent<EnemyAttack>();
+            damageDealtToPlayer = enemyScript.damage;
+            playerHealth = playerHealth - damageDealtToPlayer;
+            StartCoroutine(GetHit(0.3f));
+        }
     }
 
     void ExecuteMovementLogic()
@@ -120,6 +156,12 @@ public class CharacterStateController : MonoBehaviour
                 ScriptReference.velocity = 1f;
                 attackHitboxActive = true;
                 break;
+            case ActionState.GettingHit:
+                ScriptReference.velocity = 1f;
+               
+
+                break;
+
         }
     }
 

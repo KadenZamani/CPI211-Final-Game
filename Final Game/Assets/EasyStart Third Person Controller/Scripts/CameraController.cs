@@ -1,28 +1,18 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
-/*
-    This file has a commented version with details about how each line works. 
-    The commented version contains code that is easier and simpler to read. This file is minified.
-*/
-
-/// <summary>
-/// Camera movement script for third person games.
-/// This Script should not be applied to the camera! It is attached to an empty object and inside
-/// it (as a child object) should be your game's MainCamera.
-/// </summary>
 public class CameraController : MonoBehaviour
 {
-
-    [Tooltip("Enable to move the camera by holding the right mouse button. Does not work with joysticks.")]
+    [Tooltip("Enable to move the camera by holding the right mouse button.")]
     public bool clickToMoveCamera = false;
-    [Tooltip("Enable zoom in/out when scrolling the mouse wheel. Does not work with joysticks.")]
+    [Tooltip("Enable zoom in/out when scrolling the mouse wheel.")]
     public bool canZoom = true;
     [Space]
-    [Tooltip("The higher it is, the faster the camera moves. It is recommended to increase this value for games that uses joystick.")]
     public float sensitivity = 5f;
 
-    [Tooltip("Camera Y rotation limits. The X axis is the maximum it can go up and the Y axis is the maximum it can go down.")]
+    [Tooltip("How fast the player snaps to face the camera direction.")]
+    public float playerRotationSpeed = 10f;
+
+    [Tooltip("Camera Y rotation limits.")]
     public Vector2 cameraLimit = new Vector2(-45, 40);
 
     float mouseX;
@@ -33,43 +23,50 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-
         player = GameObject.FindWithTag("Player").transform;
         offsetDistanceY = transform.position.y;
 
-        // Lock and hide cursor with option isn't checked
-        if ( ! clickToMoveCamera )
-        {
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            UnityEngine.Cursor.visible = false;
-        }
+        // Initialize mouseX so the camera starts at the player's current rotation
+        mouseX = player.eulerAngles.y;
 
+        if (!clickToMoveCamera)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
-
-    void Update()
+    // Using LateUpdate for cameras prevents stuttering
+    void LateUpdate()
     {
+        if (player == null) return;
 
-        // Follow player - camera offset
+        // 1. Position the camera pivot on the player
         transform.position = player.position + new Vector3(0, offsetDistanceY, 0);
 
-        // Set camera zoom when mouse wheel is scrolled
-        if( canZoom && Input.GetAxis("Mouse ScrollWheel") != 0 )
+        // 2. Handle Zoom
+        if (canZoom && Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
             Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * sensitivity * 2;
-        // You can use Mathf.Clamp to set limits on the field of view
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 90); // Added a safety clamp
+        }
 
-        // Checker for right click to move camera
-        if ( clickToMoveCamera )
-            if (Input.GetAxisRaw("Fire2") == 0)
-                return;
-            
-        // Calculate new position
+        // 3. Handle Mouse Input
+        if (clickToMoveCamera && Input.GetAxisRaw("Fire2") == 0)
+            return;
+
         mouseX += Input.GetAxis("Mouse X") * sensitivity;
         mouseY += Input.GetAxis("Mouse Y") * sensitivity;
-        // Apply camera limts
         mouseY = Mathf.Clamp(mouseY, cameraLimit.x, cameraLimit.y);
 
+        // 4. Rotate the Camera
         transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
 
+        // 5. OPTION B: Smoothly rotate the player to match the camera's horizontal heading
+        // We create a target rotation using only the camera's horizontal (mouseX) value
+        Quaternion targetPlayerRotation = Quaternion.Euler(0, mouseX, 0);
+
+        // Slerp (Spherical Linear Interpolation) makes the transition smooth
+        player.rotation = Quaternion.Slerp(player.rotation, targetPlayerRotation, Time.deltaTime * playerRotationSpeed);
     }
 }

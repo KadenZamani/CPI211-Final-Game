@@ -15,6 +15,7 @@ using UnityEngine;
 /// </summary>
 public class ThirdPersonController : MonoBehaviour
 {
+    public CharacterStateController ScriptReference;
 
     [Tooltip("Speed ​​at which the character moves. It is not affected by gravity or jumping.")]
     public float velocity = 5f;
@@ -87,7 +88,7 @@ public class ThirdPersonController : MonoBehaviour
             animator.SetBool("run", cc.velocity.magnitude > minimumSpeed );
 
             // Sprint
-            isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint;
+            isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint && (ScriptReference.currentMove == MoveState.Sprinting);
             animator.SetBool("sprint", isSprinting );
 
         }

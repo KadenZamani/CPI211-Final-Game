@@ -3309,6 +3309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6247d04cdfb2a94c85160904602c58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStateController
+--- !u!95 &536546673 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2050461676340742454, guid: 13b550aac4a13254f995445c7d112d4a, type: 3}
+  m_PrefabInstance: {fileID: 598140243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &539063193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3856325583668499652, guid: 25cf72de2a9eff945a3eea4ee1c034af, type: 3}
@@ -3685,6 +3690,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1554128744791586996, guid: 13b550aac4a13254f995445c7d112d4a, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 536546673}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

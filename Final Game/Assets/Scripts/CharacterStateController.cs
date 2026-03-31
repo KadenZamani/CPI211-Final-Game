@@ -17,11 +17,14 @@ public class CharacterStateController : MonoBehaviour
     public bool attackHitboxActive = false;
     private int playerHealth = 100;
     private int damageDealtToPlayer = 0;
+     public Animator anim;
+    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     void HandleInput()
@@ -96,8 +99,8 @@ public class CharacterStateController : MonoBehaviour
         isGettingHit = true;
         currentAction = ActionState.GettingHit;
 
+        anim.SetTrigger("isHit");
 
-        //anim.SetInteger("ActionState", (int)currentAction);
 
         // Wait for the animation to finish
         yield return new WaitForSeconds(duration);
@@ -105,6 +108,7 @@ public class CharacterStateController : MonoBehaviour
 
         currentAction = ActionState.None;
         isGettingHit = false;
+        
         //anim.SetInteger("ActionState", (int)currentAction);
     }
 

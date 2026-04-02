@@ -85,10 +85,11 @@ public class ThirdPersonController : MonoBehaviour
             
             // Run
             float minimumSpeed = 0.9f;
-            animator.SetBool("run", cc.velocity.magnitude > minimumSpeed );
+            bool isMoving = Mathf.Abs(inputHorizontal) > 0.1f || Mathf.Abs(inputVertical) > 0.1f;
+            animator.SetBool("run", isMoving);
 
             // Sprint
-            isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint && (ScriptReference.currentMove == MoveState.Sprinting);
+            isSprinting = isMoving && inputSprint && (ScriptReference.currentMove == MoveState.Sprinting);
             animator.SetBool("sprint", isSprinting );
 
         }

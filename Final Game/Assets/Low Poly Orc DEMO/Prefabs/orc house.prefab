@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2921510825418890033
+--- !u!1001 &1047177218418798966
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 141.25945
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000010150598
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 264.29202
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 72b58ceb91fa3ae4385a4fd0a6b08a80, type: 2}
     - target: {fileID: 919132149155446097, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       propertyPath: m_Name
-      value: Building3
+      value: Building3 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62,20 +62,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1656746683471151600}
+      addedObject: {fileID: 2386023277071518070}
   m_SourcePrefab: {fileID: 100100000, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
---- !u!1 &2614941343109097056 stripped
+--- !u!1 &164728764104100903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f6ca00238c1aad947ae6b1da25b80d17, type: 3}
-  m_PrefabInstance: {fileID: 2921510825418890033}
+  m_PrefabInstance: {fileID: 1047177218418798966}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &-1656746683471151600
+--- !u!65 &2386023277071518070
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2614941343109097056}
+  m_GameObject: {fileID: 164728764104100903}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -88,5 +88,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.7486477, y: 6.1101756, z: 5.980751}
-  m_Center: {x: 0, y: 3.0550878, z: 0}
+  m_Size: {x: 3.9905243, y: 4.9977164, z: 4.1515503}
+  m_Center: {x: 0.12349701, y: 2.4988582, z: 0.056121826}

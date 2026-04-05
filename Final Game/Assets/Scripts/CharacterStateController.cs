@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public enum MoveState { Idle, Walking, Sprinting }
-public enum ActionState { None, Blocking, Attacking, GettingHit }
+public enum ActionState { None, Blocking, Attacking, GettingHit, Dying }
 
 public class CharacterStateController : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class CharacterStateController : MonoBehaviour
     public ThirdPersonController ScriptReference;
     private bool isPerformingAction = false;
     private bool isGettingHit = false;
+    private bool isDying = false;
     public bool attackHitboxActive = false;
+    public Slider healthBar;
     private int playerHealth = 100;
+    public Slider staminaBar;
+    private float stamina = 100;
     private int damageDealtToPlayer = 0;
      public Animator anim;
     
@@ -25,15 +30,20 @@ public class CharacterStateController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        staminaBar.maxValue = 100;
+        staminaBar.value = stamina;
+        healthBar.maxValue = 100;
+        healthBar.value = playerHealth;
     }
 
     void HandleInput()
     {
         // 1. Determine Action First
-        if (isGettingHit) return;
-        if (isPerformingAction) return;
-        if (Input.GetMouseButton(1)) currentAction = ActionState.Blocking;
-        else if (Input.GetMouseButtonDown(0))
+        if (isDying) return;
+        if (isGettingHit && !isDying) return;
+        if (isPerformingAction && !isDying) return;
+        if (Input.GetMouseButton(1) && stamina >= 1) currentAction = ActionState.Blocking;
+        else if (Input.GetMouseButtonDown(0) && stamina >= 20)
         {
             StartCoroutine(PerformAttack(0.8f)); // 0.8s is the length of attack
         }
@@ -48,7 +58,7 @@ public class CharacterStateController : MonoBehaviour
         {
             currentMove = MoveState.Idle;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && currentAction == ActionState.None)
+        else if (Input.GetKey(KeyCode.LeftShift) && currentAction == ActionState.None && stamina > 0)
         {
             // Only sprint if not attacking or blocking
             currentMove = MoveState.Sprinting;
@@ -65,14 +75,33 @@ public class CharacterStateController : MonoBehaviour
        // anim.SetInteger("ActionState", (int)currentAction);
     }
 
+    void UpdateStamina()
+    {
+        if (stamina < 0)
+        {
+            stamina = 0;
+        }
+        if (stamina > 100)
+        {
+            stamina = 100;
+        }
+        if(currentMove != MoveState.Sprinting && currentAction == ActionState.None)
+        {
+            stamina += 20 * Time.deltaTime;
+        }
+        staminaBar.value = stamina;
+    }
+
     // Update is called once per frame
     void Update()
     {
         HandleInput();
         ExecuteMovementLogic();
         ExecuteActionLogic();
+        UpdateStamina();
+        healthBar.value = playerHealth;
         //UpdateAnimator();
-       // Debug.Log("Current Move State: " + currentMove.ToString());
+        // Debug.Log("Current Move State: " + currentMove.ToString());
         Debug.Log("Current Action State: " + currentAction.ToString());
         Debug.Log("Health: " + playerHealth);
     }
@@ -81,7 +110,7 @@ public class CharacterStateController : MonoBehaviour
     {
         isPerformingAction = true;
         currentAction = ActionState.Attacking;
-
+        stamina -= 20;
         
         //anim.SetInteger("ActionState", (int)currentAction);
 
@@ -112,16 +141,41 @@ public class CharacterStateController : MonoBehaviour
         //anim.SetInteger("ActionState", (int)currentAction);
     }
 
+    IEnumerator Die(float duration)
+    {
+        isDying = true;
+        currentAction = ActionState.Dying;
+        //lock camera
+        anim.SetTrigger("isDead");
+
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(duration);
+
+
+        //uou died pop up and reset scene
+        
+
+       
+    }
+
     //detecting enemy attack hitbox
     void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("EnemyAttack") && !isGettingHit && currentAction != ActionState.Blocking) 
+        if (other.CompareTag("EnemyAttack") && !isGettingHit && !isDying && currentAction != ActionState.Blocking) 
         {
             EnemyAttack enemyScript = other.gameObject.GetComponent<EnemyAttack>();
             damageDealtToPlayer = enemyScript.damage;
             playerHealth = playerHealth - damageDealtToPlayer;
-            StartCoroutine(GetHit(0.3f));
+            if (playerHealth < 1)
+            {
+                StartCoroutine(Die(12f));
+            }
+            else
+            {
+                StartCoroutine(GetHit(0.3f));
+            }
         }
     }
 
@@ -137,6 +191,7 @@ public class CharacterStateController : MonoBehaviour
                 break;
             case MoveState.Sprinting:
                 //sprint code is already done in ThirdPersonController
+                stamina -= 20 * Time.deltaTime;
                 break;
         }
     }
@@ -154,6 +209,7 @@ public class CharacterStateController : MonoBehaviour
                 //make player block
                 ScriptReference.velocity = 1f;
                 attackHitboxActive = false;
+                stamina -= 20 * Time.deltaTime;
                 break;
             case ActionState.Attacking:
                 //make player attack
@@ -162,8 +218,9 @@ public class CharacterStateController : MonoBehaviour
                 break;
             case ActionState.GettingHit:
                 ScriptReference.velocity = 1f;
-               
-
+                break;
+            case ActionState.Dying:
+                ScriptReference.velocity = 0f;
                 break;
 
         }

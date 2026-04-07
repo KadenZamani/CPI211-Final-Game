@@ -42,10 +42,14 @@ public class CharacterStateController : MonoBehaviour
         if (isDying) return;
         if (isGettingHit && !isDying) return;
         if (isPerformingAction && !isDying) return;
-        if (Input.GetMouseButton(1) && stamina >= 1) currentAction = ActionState.Blocking;
+        if (Input.GetMouseButton(1) && stamina >= 1)
+        {
+            currentAction = ActionState.Blocking;
+           
+        }
         else if (Input.GetMouseButtonDown(0) && stamina >= 20)
         {
-            StartCoroutine(PerformAttack(0.8f)); // 0.8s is the length of attack
+            StartCoroutine(PerformAttack(1.2f)); // 0.8s is the length of attack
         }
         else currentAction = ActionState.None;
 
@@ -112,7 +116,7 @@ public class CharacterStateController : MonoBehaviour
         currentAction = ActionState.Attacking;
         stamina -= 20;
         
-        //anim.SetInteger("ActionState", (int)currentAction);
+        anim.SetTrigger("attack");
 
         // Wait for the animation to finish
         yield return new WaitForSeconds(duration);
@@ -120,7 +124,7 @@ public class CharacterStateController : MonoBehaviour
         
         currentAction = ActionState.None;
         isPerformingAction = false;
-        //anim.SetInteger("ActionState", (int)currentAction);
+        
     }
 
     IEnumerator GetHit(float duration)
@@ -174,7 +178,7 @@ public class CharacterStateController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(GetHit(0.3f));
+                StartCoroutine(GetHit(1.2f));
             }
         }
     }
@@ -204,11 +208,13 @@ public class CharacterStateController : MonoBehaviour
                 //do nothing
                 ScriptReference.velocity = 5f;
                 attackHitboxActive = false;
+                anim.SetBool("isBlocking", false);
                 break;
             case ActionState.Blocking:
                 //make player block
                 ScriptReference.velocity = 1f;
                 attackHitboxActive = false;
+                anim.SetBool("isBlocking", true);
                 stamina -= 20 * Time.deltaTime;
                 break;
             case ActionState.Attacking:

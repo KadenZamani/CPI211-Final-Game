@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -21,6 +22,11 @@ public class CharacterStateController : MonoBehaviour
     private int playerHealth = 100;
     public Slider staminaBar;
     private float stamina = 100;
+    private float maxStamina = 100;
+    private float regenDelay = 1f;
+    private float regenRate = 20f;
+    private float lastUsedTime;
+    private Coroutine regenCoroutine;
     private int damageDealtToPlayer = 0;
      public Animator anim;
     
@@ -34,6 +40,41 @@ public class CharacterStateController : MonoBehaviour
         staminaBar.value = stamina;
         healthBar.maxValue = 100;
         healthBar.value = playerHealth;
+
+    }
+
+    private void RegisterStaminaUsage()
+    {
+        lastUsedTime = Time.time; // Mark the exact second we used stamina
+
+        // If we are currently regenerating, stop it. We need to wait for the delay again.
+        if (regenCoroutine != null)
+        {
+            StopCoroutine(regenCoroutine);
+            regenCoroutine = null;
+        }
+
+        // Start a watcher that waits for the delay to pass
+        regenCoroutine = StartCoroutine(RegenRoutine());
+    }
+
+    private IEnumerator RegenRoutine()
+    {
+       
+        while (Time.time < lastUsedTime + regenDelay)
+        {
+            yield return null;
+        }
+
+        // Start Refilling
+        while (stamina < maxStamina)
+        {
+            stamina += regenRate * Time.deltaTime;
+            stamina = Mathf.Min(stamina, maxStamina);
+            yield return null;
+        }
+
+        regenCoroutine = null;
     }
 
     void HandleInput()
@@ -49,7 +90,7 @@ public class CharacterStateController : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) && stamina >= 20)
         {
-            StartCoroutine(PerformAttack(1.2f)); // 0.8s is the length of attack
+            StartCoroutine(PerformAttack(1.7f)); // 1.7s is the length of attack
         }
         else currentAction = ActionState.None;
 
@@ -62,7 +103,7 @@ public class CharacterStateController : MonoBehaviour
         {
             currentMove = MoveState.Idle;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && currentAction == ActionState.None && stamina > 0)
+        else if (Input.GetKey(KeyCode.LeftShift) && currentAction == ActionState.None && stamina > 1)
         {
             // Only sprint if not attacking or blocking
             currentMove = MoveState.Sprinting;
@@ -73,11 +114,6 @@ public class CharacterStateController : MonoBehaviour
         }
     }
 
-    void UpdateAnimator()
-    {
-       // anim.SetInteger("MoveState", (int)currentMove);
-       // anim.SetInteger("ActionState", (int)currentAction);
-    }
 
     void UpdateStamina()
     {
@@ -89,10 +125,7 @@ public class CharacterStateController : MonoBehaviour
         {
             stamina = 100;
         }
-        if(currentMove != MoveState.Sprinting && currentAction == ActionState.None)
-        {
-            stamina += 20 * Time.deltaTime;
-        }
+      
         staminaBar.value = stamina;
     }
 
@@ -115,6 +148,7 @@ public class CharacterStateController : MonoBehaviour
         isPerformingAction = true;
         currentAction = ActionState.Attacking;
         stamina -= 20;
+        RegisterStaminaUsage();
         
         anim.SetTrigger("attack");
 
@@ -149,8 +183,9 @@ public class CharacterStateController : MonoBehaviour
     {
         isDying = true;
         currentAction = ActionState.Dying;
-        //lock camera
+        
         anim.SetTrigger("isDead");
+        
 
 
         // Wait for the animation to finish
@@ -196,6 +231,7 @@ public class CharacterStateController : MonoBehaviour
             case MoveState.Sprinting:
                 //sprint code is already done in ThirdPersonController
                 stamina -= 20 * Time.deltaTime;
+                RegisterStaminaUsage();
                 break;
         }
     }
@@ -216,6 +252,7 @@ public class CharacterStateController : MonoBehaviour
                 attackHitboxActive = false;
                 anim.SetBool("isBlocking", true);
                 stamina -= 20 * Time.deltaTime;
+                RegisterStaminaUsage();
                 break;
             case ActionState.Attacking:
                 //make player attack

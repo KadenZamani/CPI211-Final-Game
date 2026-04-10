@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] public int damage = 0;
+    [SerializeField] public int damage = 20;
     public CharacterStateController ScriptReference;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,8 +23,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (ScriptReference.attackHitboxActive)
             {
-                EnemyStateController enemyScript = other.gameObject.GetComponent<EnemyStateController>();
-                enemyScript.enemyHealth = enemyScript.enemyHealth - damage;
+                other.GetComponent<Enemy>().takeDamage(damage);
                 ScriptReference.attackHitboxActive = false;
             }
         }

@@ -10099,6 +10099,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2036350724}
   m_SourcePrefab: {fileID: 100100000, guid: 0090731b51e488b43a6a7307adf4cfef, type: 3}
+--- !u!4 &1203035406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9030538853541958529, guid: 0090731b51e488b43a6a7307adf4cfef, type: 3}
+  m_PrefabInstance: {fileID: 1203035405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1209081823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17038,11 +17043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3955de6a24970f840996fe77051507ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 244.05637
+      value: 228.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3955de6a24970f840996fe77051507ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25244653
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3955de6a24970f840996fe77051507ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19504,6 +19509,14 @@ PrefabInstance:
     - target: {fileID: 825908481114890911, guid: 69333f88155feb6479ec4b451e6b4013, type: 3}
       propertyPath: m_Name
       value: Skeleton_110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087240534255342883, guid: 69333f88155feb6479ec4b451e6b4013, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1203035406}
+    - target: {fileID: 4424558298503284737, guid: 69333f88155feb6479ec4b451e6b4013, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

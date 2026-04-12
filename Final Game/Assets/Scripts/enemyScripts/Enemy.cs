@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
     public Slider healthBar;
     public Animator animator;
 
-    void Update() {         healthBar.value = HP;
+    void Update() {     
+        healthBar.value = HP;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

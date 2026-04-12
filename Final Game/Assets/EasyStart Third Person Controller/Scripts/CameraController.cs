@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     [Tooltip("Camera Y rotation limits.")]
     public Vector2 cameraLimit = new Vector2(-45, 40);
-
+    public bool isLocked = false;
     float mouseX;
     float mouseY;
     float offsetDistanceY;
@@ -39,19 +39,25 @@ public class CameraController : MonoBehaviour
     // Using LateUpdate for cameras prevents stuttering
     void LateUpdate()
     {
-        if (player == null) return;
+        // 1. Check if the player is missing OR if the camera is locked
+        if (player == null || isLocked)
+        {
+            // If the player died, we might want to unlock the cursor so they can click menus
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
 
-        // 1. Position the camera pivot on the player
+        // --- All movement logic below remains the same ---
+
         transform.position = player.position + new Vector3(0, offsetDistanceY, 0);
 
-        // 2. Handle Zoom
         if (canZoom && Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * sensitivity * 2;
-            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 90); // Added a safety clamp
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 90);
         }
 
-        // 3. Handle Mouse Input
         if (clickToMoveCamera && Input.GetAxisRaw("Fire2") == 0)
             return;
 
@@ -59,14 +65,9 @@ public class CameraController : MonoBehaviour
         mouseY += Input.GetAxis("Mouse Y") * sensitivity;
         mouseY = Mathf.Clamp(mouseY, cameraLimit.x, cameraLimit.y);
 
-        // 4. Rotate the Camera
         transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
 
-        // 5. OPTION B: Smoothly rotate the player to match the camera's horizontal heading
-        // We create a target rotation using only the camera's horizontal (mouseX) value
         Quaternion targetPlayerRotation = Quaternion.Euler(0, mouseX, 0);
-
-        // Slerp (Spherical Linear Interpolation) makes the transition smooth
         player.rotation = Quaternion.Slerp(player.rotation, targetPlayerRotation, Time.deltaTime * playerRotationSpeed);
     }
 }

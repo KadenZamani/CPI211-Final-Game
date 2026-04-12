@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
@@ -12,7 +13,8 @@ public class CharacterStateController : MonoBehaviour
     
     public MoveState currentMove = MoveState.Idle;
     public ActionState currentAction = ActionState.None;
-
+    [SerializeField] public FadeScript fader;
+    [SerializeField] public CameraController cam;
     public ThirdPersonController ScriptReference;
     private bool isPerformingAction = false;
     private bool isGettingHit = false;
@@ -185,17 +187,21 @@ public class CharacterStateController : MonoBehaviour
         currentAction = ActionState.Dying;
         
         anim.SetTrigger("isDead");
-        
+        if (cam != null)
+        {
+            cam.isLocked = true;
+        }
 
 
         // Wait for the animation to finish
         yield return new WaitForSeconds(duration);
 
 
-        //uou died pop up and reset scene
-        
-
-       
+        //you died pop up and reset scene
+        StartCoroutine(fader.FadeToBlack());
+        yield return new WaitForSeconds(2);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex);
     }
 
     //detecting enemy attack hitbox
@@ -209,7 +215,7 @@ public class CharacterStateController : MonoBehaviour
             playerHealth = playerHealth - damageDealtToPlayer;
             if (playerHealth < 1)
             {
-                StartCoroutine(Die(12f));
+                StartCoroutine(Die(6f));
             }
             else
             {

@@ -1,40 +1,46 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-public class ChaseState : StateMachineBehaviour
+public class AttackState : StateMachineBehaviour
 {
-    NavMeshAgent agent;
+    HitboxAccessor attack;
     Transform player;
-    
+    [SerializeField] float timer;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent = animator.GetComponent<NavMeshAgent>();
-        player= GameObject.FindGameObjectWithTag("Player").transform;
-        agent.speed = 3.5f;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        attack = animator.GetComponent<HitboxAccessor>();
+        attack.hitbox.GetComponent<Collider>().enabled = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-   override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        
-        agent.SetDestination(player.position);
+        timer+= Time.deltaTime;
+        if (timer >= 0.5f && timer < 0.9f)
+        {
+            attack.hitbox.GetComponent<Collider>().enabled = true;
+        }
+
+        if (timer >= 0.9f)
+        {
+            attack.hitbox.GetComponent<Collider>().enabled = false;
+        }
+
+
+        animator.transform.LookAt(player);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > 15)
-        {
-            animator.SetBool("isChasing", false);
-        }
-        if (distance < 2.5f )
-        {
-           
-            animator.SetBool("isAttacking", true);
-        }
+        //if (distance > 3.5f)
+        //{
+       //     animator.SetBool("isAttacking", false);
+      // }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent.SetDestination(animator.transform.position);
+        attack.hitbox.GetComponent<Collider>().enabled = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

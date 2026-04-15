@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (ScriptReference.attackHitboxActive)
             {
-                other.GetComponent<Enemy>().takeDamage(damage);
+                other.GetComponent<EnemyStateController>().takeDamage(damage);
                 ScriptReference.attackHitboxActive = false;
             }
         }

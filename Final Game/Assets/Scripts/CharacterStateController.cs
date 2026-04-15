@@ -139,6 +139,10 @@ public class CharacterStateController : MonoBehaviour
         ExecuteActionLogic();
         UpdateStamina();
         healthBar.value = playerHealth;
+        if(isDying)
+        {
+            ScriptReference.velocity = 0f;
+        }
         //UpdateAnimator();
         // Debug.Log("Current Move State: " + currentMove.ToString());
         Debug.Log("Current Action State: " + currentAction.ToString());

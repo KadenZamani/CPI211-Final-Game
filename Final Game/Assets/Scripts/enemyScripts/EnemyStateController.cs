@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 using UnityEngine.UI;
 
 public class EnemyStateController : MonoBehaviour
@@ -34,7 +35,8 @@ public class EnemyStateController : MonoBehaviour
     float patrolTimer;
     float walkTimer;
     float attackCooldown;
-   
+    public bool isPerformingAction = false;
+
 
     Vector3 patrolDestination;
 
@@ -71,7 +73,7 @@ public class EnemyStateController : MonoBehaviour
                 break;
 
             case State.Attack:
-                Attack(distance);
+                //Attack(distance);
                 break;
 
             case State.readyAttack:
@@ -174,10 +176,10 @@ public class EnemyStateController : MonoBehaviour
 
         // Enable hitbox during attack window
 
-        Invoke(nameof(EnableCollider), 0.2f);
+        Invoke(nameof(EnableCollider), 0.4f);
 
 
-        Invoke(nameof(DisableCollider), 0.4f);
+        Invoke(nameof(DisableCollider), 0.5f);
 
 
 
@@ -189,14 +191,28 @@ public class EnemyStateController : MonoBehaviour
         
     }
 
+    IEnumerator PerformAttack(float duration, float distance)
+    {
+        isPerformingAction = true;
+        ChangeState(State.Attack);
+        Attack(distance);
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(duration);
+
+
+        ChangeState(State.readyAttack);
+        isPerformingAction = false;
+
+    }
     void ReadyAttack(float distance)
     {
         agent.SetDestination(transform.position);
        animator.SetBool("readyAttack", true);
 
-        if (distance <= attackRange && attackCooldown >= attackCooldownMax)
+        if (distance <= attackRange && attackCooldown >= attackCooldownMax && !isPerformingAction)
         {
-            ChangeState(State.Attack);
+            StartCoroutine(PerformAttack(1f, distance));
+
         }
         else if (distance >= attackRange)
         {

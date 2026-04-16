@@ -19791,6 +19791,14 @@ PrefabInstance:
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1282765223157930497, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282765223157930497, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.009
+      objectReference: {fileID: 0}
     - target: {fileID: 2132585253348423020, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

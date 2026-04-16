@@ -7,16 +7,17 @@ public class EnemyAttack : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
 
+    }
+}
+    /*
     void OnTriggerEnter(Collider other)
     {
 
         if (other.CompareTag("Player"))
         {
             
-            StartCoroutine(DisableHitbox(0.8f));
+            StartCoroutine(DisableHitbox(0.4f));
         }
     }
     //duration  could be what ever we want to balance the attack
@@ -24,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
     {
         GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(duration);
-        GetComponent<Collider>().enabled = true;
+        //GetComponent<Collider>().enabled = true;
     }
 
     // Update is called once per frame
@@ -33,3 +34,4 @@ public class EnemyAttack : MonoBehaviour
         
     }
 }
+    */

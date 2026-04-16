@@ -19787,6 +19787,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1271540633608980067, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2132585253348423020, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -19799,9 +19803,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1250062163}
+    - target: {fileID: 3189034412935739523, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: attackRange
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5070800814247957000, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_Name
       value: newSkeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236855871059644225, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236855871059644225, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7937682994796916940, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: cam
@@ -19809,7 +19825,7 @@ PrefabInstance:
       objectReference: {fileID: 1203035406}
     - target: {fileID: 8744641611133764132, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 228.46272
+      value: 204.07
       objectReference: {fileID: 0}
     - target: {fileID: 8744641611133764132, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_LocalPosition.y

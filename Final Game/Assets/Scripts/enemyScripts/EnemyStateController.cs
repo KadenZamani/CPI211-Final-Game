@@ -28,13 +28,13 @@ public class EnemyStateController : MonoBehaviour
 
     [Header("Ranges")]
     public float chaseRange = 8f;
-    public float attackRange = 2.5f;
-
+    public float attackRange = 0.5f;
+    public float attackCooldownMax = 4f;
     float idleTimer;
     float patrolTimer;
     float walkTimer;
     float attackCooldown;
-    float attackTimer;
+   
 
     Vector3 patrolDestination;
 
@@ -44,13 +44,14 @@ public class EnemyStateController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         
         attackCooldown = 5f; // Start with attack ready
-
+        attack.GetComponent<Collider>().enabled = false;
         currentState = State.Idle;
     }
 
     void Update()
     {
         attackCooldown += Time.deltaTime;
+       
         if (currentState == State.Dead) return;
 
         float distance = Vector3.Distance(player.position, transform.position);
@@ -78,6 +79,23 @@ public class EnemyStateController : MonoBehaviour
                 break;
         }
     }
+
+
+
+    //Attack Collider functions
+    void EnableCollider()
+    {
+        attack.GetComponent<Collider>().enabled = true;
+    }
+
+    void DisableCollider()
+    {
+        attack.GetComponent<Collider>().enabled = false;
+    }
+
+
+
+
 
     // ---------------- STATES ----------------
 
@@ -145,28 +163,29 @@ public class EnemyStateController : MonoBehaviour
 
     void Attack(float distance)
     {
+
+        attack.GetComponent<Collider>().enabled = false;
+
+
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
-        attackTimer += Time.deltaTime;
+
 
         // Enable hitbox during attack window
-        if (attackTimer >= 0.5f && attackTimer < 0.6f)
-        {
-            attack.GetComponent<Collider>().enabled = true;
-            attackCooldown = 0f;
-        }
-        else { 
-            attack.GetComponent<Collider>().enabled = false;
-        }
+
+        Invoke(nameof(EnableCollider), 0.2f);
 
 
-         if (attackTimer >= 1f)
-        {
-            attackCooldown = 0f;
-            attack.GetComponent<Collider>().enabled = false;
+        Invoke(nameof(DisableCollider), 0.4f);
+
+
+
+
+        attackCooldown = 0f;
+           
             ChangeState(State.readyAttack);
-        }
+        
         
     }
 
@@ -175,7 +194,7 @@ public class EnemyStateController : MonoBehaviour
         agent.SetDestination(transform.position);
        animator.SetBool("readyAttack", true);
 
-        if (distance <= attackRange && attackCooldown >= 5f)
+        if (distance <= attackRange && attackCooldown >= attackCooldownMax)
         {
             ChangeState(State.Attack);
         }
@@ -221,7 +240,7 @@ public class EnemyStateController : MonoBehaviour
         // Reset timers when entering states
         idleTimer = 0;
         patrolTimer = 0;
-        attackTimer = 0;
+       
 
         if (newState == State.Attack)
         {

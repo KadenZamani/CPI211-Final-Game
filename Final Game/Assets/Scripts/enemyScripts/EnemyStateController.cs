@@ -45,7 +45,7 @@ public class EnemyStateController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         
-        attackCooldown = 5f; // Start with attack ready
+        attackCooldown = 0f; 
         attack.GetComponent<Collider>().enabled = false;
         currentState = State.Idle;
     }
@@ -85,12 +85,12 @@ public class EnemyStateController : MonoBehaviour
 
 
     //Attack Collider functions
-    void EnableCollider()
+    public void EnableCollider()
     {
         attack.GetComponent<Collider>().enabled = true;
     }
 
-    void DisableCollider()
+    public void DisableCollider()
     {
         attack.GetComponent<Collider>().enabled = false;
     }
@@ -166,7 +166,7 @@ public class EnemyStateController : MonoBehaviour
     void Attack(float distance)
     {
 
-        attack.GetComponent<Collider>().enabled = false;
+        
 
 
         agent.SetDestination(transform.position);
@@ -176,10 +176,7 @@ public class EnemyStateController : MonoBehaviour
 
         // Enable hitbox during attack window
 
-        Invoke(nameof(EnableCollider), 0.4f);
-
-
-        Invoke(nameof(DisableCollider), 0.5f);
+       
 
 
 

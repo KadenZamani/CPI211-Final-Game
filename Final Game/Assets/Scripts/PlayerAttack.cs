@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // duration is player attack cooldown
-            StartCoroutine(DisableHitbox(1.7f));
+            StartCoroutine(DisableHitbox(1.1f));
         }
 
         if (other.CompareTag("Enemy"))

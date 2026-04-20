@@ -92,7 +92,7 @@ public class CharacterStateController : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) && stamina >= 20)
         {
-            StartCoroutine(PerformAttack(1.7f)); // 1.7s is the length of attack
+            StartCoroutine(PerformAttack(1.1f)); // 1.7s is the length of attack
         }
         else currentAction = ActionState.None;
 
@@ -153,7 +153,7 @@ public class CharacterStateController : MonoBehaviour
     {
         isPerformingAction = true;
         currentAction = ActionState.Attacking;
-        stamina -= 20;
+        stamina -= 15;
         RegisterStaminaUsage();
         
         anim.SetTrigger("attack");

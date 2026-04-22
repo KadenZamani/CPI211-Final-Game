@@ -228,12 +228,6 @@ public class CharacterStateController : MonoBehaviour
         }
     }
 
-    public void GainHealth(int amount)
-    {
-        playerHealth += amount;
-        playerHealth = (int) Mathf.Min(100f, (float) playerHealth);
-    }
-
     void ExecuteMovementLogic()
     {
         switch (currentMove)

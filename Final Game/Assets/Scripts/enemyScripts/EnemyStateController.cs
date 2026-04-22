@@ -235,7 +235,6 @@ public class EnemyStateController : MonoBehaviour
 
         if (HP <= 0)
         {
-            agent.enabled = false;
             currentState = State.Dead;
             animator.SetTrigger("die");
             GetComponent<Collider>().enabled = false;

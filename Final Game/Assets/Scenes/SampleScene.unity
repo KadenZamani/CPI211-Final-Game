@@ -528,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105820456186323774, guid: 1b4f3625cd6fe4244acde69f896d820e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 333.86
+      value: 326.69513
       objectReference: {fileID: 0}
     - target: {fileID: 9105820456186323774, guid: 1b4f3625cd6fe4244acde69f896d820e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21312,7 +21312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c72e3254473f1d4f8c27cb23c48568f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateController
-  currentState: 1
+  currentState: 0
   player: {fileID: 1250062163}
   agent: {fileID: 1802453878}
   animator: {fileID: 1802453877}
@@ -21937,7 +21937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105820456186323774, guid: 1b4f3625cd6fe4244acde69f896d820e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 207.07
+      value: 184.24
       objectReference: {fileID: 0}
     - target: {fileID: 9105820456186323774, guid: 1b4f3625cd6fe4244acde69f896d820e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24290,9 +24290,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 150
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 150
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -25646,14 +25646,6 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1.8
       objectReference: {fileID: 0}
-    - target: {fileID: 3197342307486185982, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
-      propertyPath: m_Value
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3197342307486185982, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
-      propertyPath: m_MaxValue
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 4743741227307169924, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -26705,7 +26697,7 @@ PrefabInstance:
       objectReference: {fileID: 1203035406}
     - target: {fileID: 8744641611133764132, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 216.46
+      value: 204.07
       objectReference: {fileID: 0}
     - target: {fileID: 8744641611133764132, guid: fe43fa98dfc151c49bd105ab1970fbc7, type: 3}
       propertyPath: m_LocalPosition.y

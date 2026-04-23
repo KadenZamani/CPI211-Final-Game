@@ -487,6 +487,10 @@ PrefabInstance:
       value: trex
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cc04912d0cbeec048b57a8dca3693e03, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: e7440707e61d2d14ba63a93c67474ba9, type: 3}
+    - target: {fileID: 5866666021909216657, guid: cc04912d0cbeec048b57a8dca3693e03, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2300da455d0291f45a7e711bba8bdf40, type: 2}

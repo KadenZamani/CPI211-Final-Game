@@ -45,6 +45,7 @@ public class CharacterStateController : MonoBehaviour
 
     }
 
+
     private void RegisterStaminaUsage()
     {
         lastUsedTime = Time.time; // Mark the exact second we used stamina
@@ -211,7 +212,11 @@ public class CharacterStateController : MonoBehaviour
     //detecting enemy attack hitbox
     void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Portal"))
+        {
+            SceneManager.LoadScene(1);
+        }
+
         if (other.CompareTag("EnemyAttack") && !isGettingHit && !isDying && currentAction != ActionState.Blocking) 
         {
             EnemyAttack enemyScript = other.gameObject.GetComponent<EnemyAttack>();

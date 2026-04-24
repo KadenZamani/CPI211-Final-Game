@@ -45,6 +45,7 @@ public class CharacterStateController : MonoBehaviour
 
     }
 
+     
 
     private void RegisterStaminaUsage()
     {

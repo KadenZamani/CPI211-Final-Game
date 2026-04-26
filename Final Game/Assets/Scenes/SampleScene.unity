@@ -31325,6 +31325,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d1965b00212cc4a8ae1a1b0cbe8aff, type: 3}
+--- !u!1001 &2859659538269507924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 499217140332837539, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499217140332837539, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 949262042352372350, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1250062163}
+    - target: {fileID: 1301674816876625108, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_Name
+      value: RoboSoldierMiniboss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318857386529042226, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1203035406}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 252.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 248.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034698115979598845, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
 --- !u!1001 &3769233747937996891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31821,3 +31894,4 @@ SceneRoots:
   - {fileID: 227999583}
   - {fileID: 2147312984}
   - {fileID: 6079261635647122015}
+  - {fileID: 2859659538269507924}

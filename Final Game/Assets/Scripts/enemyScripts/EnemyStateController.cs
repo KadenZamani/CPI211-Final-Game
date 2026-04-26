@@ -236,6 +236,7 @@ public class EnemyStateController : MonoBehaviour
         if (HP <= 0)
         {
             currentState = State.Dead;
+            DisableCollider();
             agent.enabled = false;
             animator.SetTrigger("die");
             GetComponent<Collider>().enabled = false;
@@ -243,7 +244,10 @@ public class EnemyStateController : MonoBehaviour
         }
         else
         {
+            DisableCollider();
             animator.SetTrigger("damage");
+            
+
         }
     }
 

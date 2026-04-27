@@ -53,7 +53,11 @@ public class EnemyStateController : MonoBehaviour
     void Update()
     {
         attackCooldown += Time.deltaTime;
-       
+       if(HP <= 0)
+        {
+            DisableCollider();
+            currentState = State.Dead;
+        }
         if (currentState == State.Dead) return;
 
         float distance = Vector3.Distance(player.position, transform.position);
@@ -235,6 +239,8 @@ public class EnemyStateController : MonoBehaviour
 
         if (HP <= 0)
         {
+            GetComponent<Collider>().enabled = false;
+            DisableCollider();
             currentState = State.Dead;
             DisableCollider();
             agent.enabled = false;

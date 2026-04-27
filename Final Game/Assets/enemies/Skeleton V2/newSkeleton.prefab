@@ -2243,7 +2243,9 @@ MonoBehaviour:
   attack: {fileID: 4814746501372842561}
   HP: 100
   chaseRange: 8
-  attackRange: 2.5
+  attackRange: 1.5
+  attackCooldownMax: 4
+  isPerformingAction: 0
 --- !u!1 &5112472311759488964
 GameObject:
   m_ObjectHideFlags: 0

@@ -676,7 +676,7 @@ MonoBehaviour:
   HP: 120
   chaseRange: 8
   attackRange: 1.6
-  attackCooldownMax: 4
+  attackCooldownMax: 5
   isPerformingAction: 0
 --- !u!65 &4332429586887448242
 BoxCollider:

@@ -15,6 +15,23 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            
+                other.GetComponent<EnemyStateController>().takeDamage(damage);
+                
+            
+        }
+    }
+
+
+
+
+
+
+    /*
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
             // duration is player attack cooldown
             StartCoroutine(DisableHitbox(1.1f));
         }
@@ -35,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(duration);
         GetComponent<Collider>().enabled = true;
     }
-
+    */
     // Update is called once per frame
     void Update()
     {

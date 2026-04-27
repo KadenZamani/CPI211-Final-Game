@@ -31,7 +31,8 @@ public class CharacterStateController : MonoBehaviour
     private Coroutine regenCoroutine;
     private int damageDealtToPlayer = 0;
      public Animator anim;
-    
+    public GameObject PlayerAttack;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +46,15 @@ public class CharacterStateController : MonoBehaviour
 
     }
 
+    void EnableAttackCollider()
+    {
+               PlayerAttack.GetComponent<Collider>().enabled = true;
+    }
+
+    void DisableAttackCollider()
+    {
+               PlayerAttack.GetComponent<Collider>().enabled = false;
+    }
      
 
     private void RegisterStaminaUsage()
@@ -173,7 +183,7 @@ public class CharacterStateController : MonoBehaviour
     {
         isGettingHit = true;
         currentAction = ActionState.GettingHit;
-
+        DisableAttackCollider();
         anim.SetTrigger("isHit");
 
 
@@ -191,7 +201,7 @@ public class CharacterStateController : MonoBehaviour
     {
         isDying = true;
         currentAction = ActionState.Dying;
-        
+        DisableAttackCollider();
         anim.SetTrigger("isDead");
         if (cam != null)
         {

@@ -4148,6 +4148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanMiniBoss (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 412340616308351125, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1250062163}
     - target: {fileID: 1800003005464733085, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 78.624756
@@ -4199,7 +4203,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 45883483313498947, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 989829485}
   m_SourcePrefab: {fileID: 100100000, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
 --- !u!4 &327566317 stripped
 Transform:
@@ -6917,6 +6924,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 949262042352372350, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1250062163}
     - target: {fileID: 1301674816876625108, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
       propertyPath: m_Name
       value: RoboSoldierMiniboss
@@ -6964,7 +6975,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1301674816876625108, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1355369880}
   m_SourcePrefab: {fileID: 100100000, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
 --- !u!4 &561045408 stripped
 Transform:
@@ -7355,6 +7369,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5023827496289240853, guid: a79279818571b6848a9ccb8dcb36dd2c, type: 3}
   m_PrefabInstance: {fileID: 588966149}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &589072967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 412340616308351125, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+  m_PrefabInstance: {fileID: 323773405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989829480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72e3254473f1d4f8c27cb23c48568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateController
 --- !u!4 &591965567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4533943726500818, guid: 2224b63330275e5478ef024b2913f937, type: 3}
@@ -10355,6 +10380,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4533943726500818, guid: 2224b63330275e5478ef024b2913f937, type: 3}
   m_PrefabInstance: {fileID: 805138576}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &814448299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1301674816876625108, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+  m_PrefabInstance: {fileID: 545761076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &815162450
 GameObject:
   m_ObjectHideFlags: 0
@@ -12042,6 +12072,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80eeb85a0b1e81740af342fb5ac20c1b, type: 3}
+--- !u!114 &875163470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5607396310410199225, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+  m_PrefabInstance: {fileID: 1075291083}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670672114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72e3254473f1d4f8c27cb23c48568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateController
 --- !u!1001 &877549224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13736,6 +13777,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5142532879768850087, guid: 5983c8a04c0e73047a6c860b9cd9aaad, type: 3}
   m_PrefabInstance: {fileID: 971182737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &989829480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 45883483313498947, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+  m_PrefabInstance: {fileID: 323773405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &989829485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989829480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2295cadb79fff534d936bc5409aab5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniBossScript
+  bossNumber: 2
+  GCScript: {fileID: 1837714843}
+  ESController: {fileID: 589072967}
 --- !u!1 &1003898162
 GameObject:
   m_ObjectHideFlags: 0
@@ -14710,7 +14771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846701480748041995, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 136.46892
+      value: 235.8
       objectReference: {fileID: 0}
     - target: {fileID: 2846701480748041995, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14718,7 +14779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846701480748041995, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 271.48953
+      value: 242.1
       objectReference: {fileID: 0}
     - target: {fileID: 2846701480748041995, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14748,6 +14809,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5607396310410199225, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1250062163}
     - target: {fileID: 6551063118795059022, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -14759,7 +14824,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000081668453446078, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1670672119}
   m_SourcePrefab: {fileID: 100100000, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
 --- !u!1001 &1080901900
 PrefabInstance:
@@ -19353,6 +19421,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e76eadee9b185f4fa619417a094e0cd, type: 3}
+--- !u!114 &1355369875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 949262042352372350, guid: e5f99694ee8b2aa42b9876982eef89a8, type: 3}
+  m_PrefabInstance: {fileID: 545761076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814448299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72e3254473f1d4f8c27cb23c48568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateController
+--- !u!114 &1355369880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814448299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2295cadb79fff534d936bc5409aab5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniBossScript
+  bossNumber: 3
+  GCScript: {fileID: 1837714843}
+  ESController: {fileID: 1355369875}
 --- !u!1001 &1355407267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24557,6 +24651,26 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1332014027}
   m_SourcePrefab: {fileID: 100100000, guid: 3df42c1832e6e114cab100f100ec04ef, type: 3}
+--- !u!1 &1670672114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000081668453446078, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+  m_PrefabInstance: {fileID: 1075291083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1670672119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670672114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2295cadb79fff534d936bc5409aab5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniBossScript
+  bossNumber: 1
+  GCScript: {fileID: 1837714843}
+  ESController: {fileID: 875163470}
 --- !u!1 &1672497710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7723651548003174306, guid: e69237e5532a8bc4cacfd0fc24212589, type: 3}
@@ -26995,9 +27109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b31e05511907e46a5022748afc146c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameControllerScript
-  key1: 1
-  key2: 1
-  key3: 1
+  key1: 0
+  key2: 0
+  key3: 0
+  miniboss1: {fileID: 875163470}
+  miniboss2: {fileID: 589072967}
+  miniboss3: {fileID: 1355369875}
+  minibossObject1: {fileID: 1670672114}
+  minibossObject2: {fileID: 989829480}
+  minibossObject3: {fileID: 814448299}
 --- !u!4 &1837714844
 Transform:
   m_ObjectHideFlags: 0

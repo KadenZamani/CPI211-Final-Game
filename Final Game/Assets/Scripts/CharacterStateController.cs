@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -43,6 +44,7 @@ public class CharacterStateController : MonoBehaviour
         staminaBar.value = stamina;
         healthBar.maxValue = 100;
         healthBar.value = playerHealth;
+       
 
     }
 
@@ -155,10 +157,8 @@ public class CharacterStateController : MonoBehaviour
         {
             ScriptReference.velocity = 0f;
         }
-        //UpdateAnimator();
-        // Debug.Log("Current Move State: " + currentMove.ToString());
-        Debug.Log("Current Action State: " + currentAction.ToString());
-        Debug.Log("Health: " + playerHealth);
+        
+        
     }
 
     IEnumerator PerformAttack(float duration)

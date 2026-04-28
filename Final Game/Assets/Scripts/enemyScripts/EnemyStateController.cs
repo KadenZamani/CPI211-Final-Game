@@ -36,7 +36,9 @@ public class EnemyStateController : MonoBehaviour
     float walkTimer;
     float attackCooldown;
     public bool isPerformingAction = false;
-
+    public AudioSource mySource;
+    public AudioClip EnemyHitSound;
+    
 
     Vector3 patrolDestination;
 
@@ -247,9 +249,12 @@ public class EnemyStateController : MonoBehaviour
             animator.SetTrigger("die");
             GetComponent<Collider>().enabled = false;
             Destroy(gameObject, 10f);
+            mySource.PlayOneShot(EnemyHitSound);
+
         }
         else
         {
+            mySource.PlayOneShot(EnemyHitSound);
             DisableCollider();
             animator.SetTrigger("damage");
             

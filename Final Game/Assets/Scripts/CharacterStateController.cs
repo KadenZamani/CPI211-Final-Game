@@ -33,6 +33,8 @@ public class CharacterStateController : MonoBehaviour
     private int damageDealtToPlayer = 0;
      public Animator anim;
     public GameObject PlayerAttack;
+    public AudioSource mySource;
+    public AudioClip PlayerAttackSound;
 
 
 
@@ -48,6 +50,10 @@ public class CharacterStateController : MonoBehaviour
 
     }
 
+    void PlayAttackSound()
+    {
+        mySource.PlayOneShot(PlayerAttackSound);
+    }
     void EnableAttackCollider()
     {
                PlayerAttack.GetComponent<Collider>().enabled = true;

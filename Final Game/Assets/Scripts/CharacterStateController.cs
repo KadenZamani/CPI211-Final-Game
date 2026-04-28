@@ -35,6 +35,11 @@ public class CharacterStateController : MonoBehaviour
     public GameObject PlayerAttack;
     public AudioSource mySource;
     public AudioClip PlayerAttackSound;
+    public AudioClip GetHitSound;
+    public AudioClip DeathSound;
+    public AudioClip BlockSound;
+    public AudioClip WalkSound;
+    public AudioClip SprintSound;
 
 
 
@@ -52,8 +57,18 @@ public class CharacterStateController : MonoBehaviour
 
     void PlayAttackSound()
     {
-        mySource.PlayOneShot(PlayerAttackSound);
+        mySource.PlayOneShot(PlayerAttackSound, 0.7f);
     }
+    void PlayWalkSound()
+    {
+        mySource.PlayOneShot(WalkSound, 0.35f);
+    }
+    void PlaySprintSound()
+    {
+        mySource.PlayOneShot(SprintSound, 0.2f);
+    }
+
+
     void EnableAttackCollider()
     {
                PlayerAttack.GetComponent<Collider>().enabled = true;
@@ -191,8 +206,7 @@ public class CharacterStateController : MonoBehaviour
         currentAction = ActionState.GettingHit;
         DisableAttackCollider();
         anim.SetTrigger("isHit");
-
-
+        mySource.PlayOneShot(GetHitSound, 0.2f);
         // Wait for the animation to finish
         yield return new WaitForSeconds(duration);
 
@@ -209,6 +223,7 @@ public class CharacterStateController : MonoBehaviour
         currentAction = ActionState.Dying;
         DisableAttackCollider();
         anim.SetTrigger("isDead");
+        mySource.PlayOneShot(DeathSound, 0.5f);
         if (cam != null)
         {
             cam.isLocked = true;
@@ -247,6 +262,10 @@ public class CharacterStateController : MonoBehaviour
             {
                 StartCoroutine(GetHit(1.2f));
             }
+        }
+        if (other.CompareTag("EnemyAttack") && !isGettingHit && !isDying && currentAction == ActionState.Blocking)
+        {
+            mySource.PlayOneShot(BlockSound, 1f);
         }
     }
 

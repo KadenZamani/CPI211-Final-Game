@@ -18000,6 +18000,11 @@ MonoBehaviour:
   PlayerAttack: {fileID: 1054058637}
   mySource: {fileID: 657343995}
   PlayerAttackSound: {fileID: 8300000, guid: cbe26dacfe0ad4a4ea0b331d53f62f90, type: 3}
+  GetHitSound: {fileID: 8300000, guid: cea0f5a360c03ff40b79f312ad6a22ad, type: 3}
+  DeathSound: {fileID: 8300000, guid: c11b7659dd5799b4fa951084185ee892, type: 3}
+  BlockSound: {fileID: 8300000, guid: 7db7bd28aa4dfca4cb3d82eb286dcbdb, type: 3}
+  WalkSound: {fileID: 8300000, guid: 4a931171a1d0db040aea8b7342615513, type: 3}
+  SprintSound: {fileID: 8300000, guid: 481878e7c33c7074dbf4d4a414bab25f, type: 3}
 --- !u!114 &1250062166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31958,6 +31963,10 @@ PrefabInstance:
     - target: {fileID: 6205557106145880763, guid: 46f4f4c0cb1e9c940ac30bcf1f1214ed, type: 3}
       propertyPath: m_Name
       value: Enemy camp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6205557106145880763, guid: 46f4f4c0cb1e9c940ac30bcf1f1214ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

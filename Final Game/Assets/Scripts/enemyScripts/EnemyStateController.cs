@@ -38,10 +38,15 @@ public class EnemyStateController : MonoBehaviour
     public bool isPerformingAction = false;
     public AudioSource mySource;
     public AudioClip EnemyHitSound;
+    public AudioClip AttackSound;
     
 
     Vector3 patrolDestination;
 
+    void PlayEnemyAttackSound()
+    {
+               mySource.PlayOneShot(AttackSound, 0.2f);
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -249,12 +254,12 @@ public class EnemyStateController : MonoBehaviour
             animator.SetTrigger("die");
             GetComponent<Collider>().enabled = false;
             Destroy(gameObject, 10f);
-            mySource.PlayOneShot(EnemyHitSound);
+            mySource.PlayOneShot(EnemyHitSound,0.35f);
 
         }
         else
         {
-            mySource.PlayOneShot(EnemyHitSound);
+            mySource.PlayOneShot(EnemyHitSound,0.35f);
             DisableCollider();
             animator.SetTrigger("damage");
             

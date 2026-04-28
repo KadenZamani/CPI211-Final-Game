@@ -2249,6 +2249,7 @@ MonoBehaviour:
   isPerformingAction: 0
   mySource: {fileID: 2555526069958037395}
   EnemyHitSound: {fileID: 8300000, guid: fdf66306b04b135469d3d0ab0c6baaed, type: 3}
+  AttackSound: {fileID: 8300000, guid: 6799da1dd72dc0e4ca57a4137fe0870a, type: 3}
 --- !u!82 &2555526069958037395
 AudioSource:
   m_ObjectHideFlags: 0

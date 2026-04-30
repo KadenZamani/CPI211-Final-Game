@@ -199,7 +199,7 @@ public class EnemyStateController : MonoBehaviour
         
     }
 
-    IEnumerator PerformAttack(float duration, float distance)
+    public IEnumerator PerformAttack(float duration, float distance)
     {
         isPerformingAction = true;
         ChangeState(State.Attack);

@@ -135,8 +135,8 @@ ModelImporter:
       name: Armature|Armature|walkroar
       takeName: Armature|Armature|walkroar
       internalID: -1283873224127883182
-      firstFrame: 0
-      lastFrame: 360
+      firstFrame: 152
+      lastFrame: 304
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

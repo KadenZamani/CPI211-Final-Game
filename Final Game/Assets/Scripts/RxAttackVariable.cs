@@ -6,6 +6,9 @@ public class RxAttackVariable : MonoBehaviour
     public bool b = false;
     private bool e = false;
     public Animator rexAnim;
+    public AudioSource rexSound;
+    public AudioClip roarSound;
+    public AudioClip BiteSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,4 +34,15 @@ public class RxAttackVariable : MonoBehaviour
     {
         a = false;
     }
+
+    void PlayRoarSound()
+    {
+        rexSound.PlayOneShot(roarSound );
+    }
+
+    void PlayBiteSound()
+        {
+            rexSound.PlayOneShot(BiteSound);
+    }   
+
 }

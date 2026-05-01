@@ -25,22 +25,22 @@ public class RxAttackVariable : MonoBehaviour
             rexAnim.SetTrigger("roarTrigger");
         }
     }
-    void setTrue()
+    public void setTrue()
     {
         a = true;
     }
 
-    void setFalse()
+    public void setFalse()
     {
         a = false;
     }
 
-    void PlayRoarSound()
+    public void PlayRoarSound()
     {
         rexSound.PlayOneShot(roarSound );
     }
 
-    void PlayBiteSound()
+    public void PlayBiteSound()
         {
             rexSound.PlayOneShot(BiteSound);
     }   

@@ -307,7 +307,7 @@ public class CharacterStateController : MonoBehaviour
                 break;
             case ActionState.Attacking:
                 //make player attack
-                ScriptReference.velocity = 1f;
+                ScriptReference.velocity = 0.3f;
                 attackHitboxActive = true;
                 break;
             case ActionState.GettingHit:

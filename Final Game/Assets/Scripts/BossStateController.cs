@@ -13,6 +13,7 @@ public class BossStateController : MonoBehaviour
     public GunfireController gunController3;
     private bool phaseChange = false;
     public Animator rexAnim;
+    private bool missileMode = false;
 
     private void Update()
     {
@@ -26,11 +27,18 @@ public class BossStateController : MonoBehaviour
             enemyController.DisableCollider();
         }
 
-        if (enemyController.HP < 50 && !phaseChange)
+        if (enemyController.HP < 200 && !phaseChange)
         {
             phaseChange = true;
             StartCoroutine(stateTransition());
 
+        }
+
+        if (enemyController.HP < 130 && !missileMode)
+        {
+            missileMode = true;
+            gunController3.FireWeapon();
+            gunController3.autoFire = true;
         }
 
 
@@ -41,8 +49,8 @@ public class BossStateController : MonoBehaviour
        
         enemyController.enabled = false;
         RxAttack.b = true;
-        //rexAnim.Play("Roar");
-        StartCoroutine(Barrage(0.3f));
+        
+        StartCoroutine(Barrage(0.5f));
         
         yield return new WaitForSeconds(6f);
         enemyController.enabled = true;

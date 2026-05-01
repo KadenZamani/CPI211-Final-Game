@@ -29496,6 +29496,7 @@ GameObject:
   - component: {fileID: 169261439359229380}
   - component: {fileID: -5073104322425550657}
   - component: {fileID: -2843787954658033033}
+  - component: {fileID: -4997144199983220299}
   m_Layer: 0
   m_Name: RocketExplosion 1
   m_TagString: EnemyAttack
@@ -34529,6 +34530,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4997144199983220299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764654978243476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41dedc4d0f15a574788d6bf177dfeb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosionTimer
+  damageDuration: 0.2
 --- !u!1 &1924202265790126
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,6 +39,7 @@ public class EnemyStateController : MonoBehaviour
     public AudioSource mySource;
     public AudioClip EnemyHitSound;
     public AudioClip AttackSound;
+    [SerializeField] public bool canFlinch = true;
     
 
     Vector3 patrolDestination;
@@ -73,14 +74,17 @@ public class EnemyStateController : MonoBehaviour
         {
             case State.Idle:
                 Idle(distance);
+               
                 break;
 
             case State.Patrol:
                 Patrol(distance);
+               
                 break;
 
             case State.Chase:
                 Chase(distance);
+             
                 break;
 
             case State.Attack:
@@ -89,6 +93,7 @@ public class EnemyStateController : MonoBehaviour
 
             case State.readyAttack:
                 ReadyAttack(distance);
+            
                 break;
         }
     }
@@ -261,7 +266,10 @@ public class EnemyStateController : MonoBehaviour
         {
             mySource.PlayOneShot(EnemyHitSound,0.35f);
             DisableCollider();
-            animator.SetTrigger("damage");
+            if (canFlinch)
+            {
+                animator.SetTrigger("damage");
+            }
             
 
         }

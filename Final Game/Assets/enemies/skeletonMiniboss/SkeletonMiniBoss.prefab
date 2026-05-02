@@ -563,7 +563,7 @@ MonoBehaviour:
   animator: {fileID: 645123687858643442}
   healthBar: {fileID: 7515189062512305528}
   attack: {fileID: 7076859354420222458}
-  HP: 150
+  HP: 200
   chaseRange: 8
   attackRange: 1.8
   attackCooldownMax: 4
@@ -571,6 +571,7 @@ MonoBehaviour:
   mySource: {fileID: 339688100727404104}
   EnemyHitSound: {fileID: 8300000, guid: fdf66306b04b135469d3d0ab0c6baaed, type: 3}
   AttackSound: {fileID: 8300000, guid: 6799da1dd72dc0e4ca57a4137fe0870a, type: 3}
+  canFlinch: 1
 --- !u!82 &339688100727404104
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,48 +4,48 @@ public class MiniBossScript : MonoBehaviour
 
 {
     [SerializeField] int bossNumber;
-    public GameControllerScript GCScript;
-    public EnemyStateController ESController;
+
+
+    //public GameControllerScript GCScript;
+   public EnemyStateController ESController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+  
+
+    [SerializeField] private string enemyID; // Give each enemy a unique name in the Inspector
+
     void Start()
     {
-        
+        // Check with the Controller if I should exist
+        if (GameControllerScript.Instance != null && GameControllerScript.Instance.IsEnemyDead(enemyID))
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Awake()
+    public void Die()
     {
-        //DontDestroyOnLoad(gameObject);
+        // Tell the Controller to remember this death
+        if (GameControllerScript.Instance != null)
+        {
+            GameControllerScript.Instance.MarkEnemyAsDead(enemyID);
+        }
+
+        // Normal death logic
+       // Destroy(gameObject);
     }
+
+    private void Update()
+    {
+        if(ESController.HP <= 0)
+        {
+            
+            Die();
+        }
+    }
+
+
 
     // Update is called once per frame
-    void Update()
-    {
-        if (ESController.HP <= 0 && bossNumber == 1)
-        {
-            GCScript.key1 = true;
-        }
-        if (ESController.HP <= 0 && bossNumber == 2)
-        {
-            GCScript.key2 = true;
-        }
-        if (ESController.HP <= 0 && bossNumber == 3)
-        {
-            GCScript.key3 = true;
-        }
 
 
-
-        if (GCScript.key1 == true && bossNumber == 1)
-        {
-            Destroy(gameObject);
-        }
-        if (GCScript.key2 == true && bossNumber == 2)
-        {
-            Destroy(gameObject);
-        }
-        if (GCScript.key3 == true && bossNumber == 3)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

@@ -245,7 +245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 459}
+  m_AnchoredPosition: {x: 0, y: 185}
   m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457224381
@@ -268,9 +268,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The timelines have collapsed. \n\nWorlds from past, present, and future
-    have been merged into chaos. \n\nThe three guardians hold the keys to the castle.\n\n
-    Defeat them. Open the gates and challenge the great foe from beyond this realm."
+  m_text: 'Congratulations!
+
+
+    You did it!
+
+
+    You restored the timeline and
+    saved the world!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -626,7 +631,6 @@ GameObject:
   - component: {fileID: 1666682459}
   - component: {fileID: 1666682458}
   - component: {fileID: 1666682457}
-  - component: {fileID: 1666682461}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -718,18 +722,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1666682461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666682456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5a8dfcc62c6cd48aefa89e141db640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::introScreenScript
 --- !u!1 &1854317636
 GameObject:
   m_ObjectHideFlags: 0

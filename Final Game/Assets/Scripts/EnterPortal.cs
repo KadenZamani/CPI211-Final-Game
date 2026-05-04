@@ -12,7 +12,7 @@ public class EnterPortal : MonoBehaviour
     {
         if (other.CompareTag("Portal"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("BossFight");
         }
     }
         // Update is called once per frame

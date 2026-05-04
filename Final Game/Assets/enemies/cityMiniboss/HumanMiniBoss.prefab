@@ -247,6 +247,7 @@ MonoBehaviour:
   mySource: {fileID: 5920178841095601947}
   EnemyHitSound: {fileID: 8300000, guid: fdf66306b04b135469d3d0ab0c6baaed, type: 3}
   AttackSound: {fileID: 8300000, guid: 6799da1dd72dc0e4ca57a4137fe0870a, type: 3}
+  canFlinch: 1
 --- !u!82 &5920178841095601947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4467,7 +4468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce20798b7de32e0479a3471b9f99037c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 30
 --- !u!1 &7543278126157176124
 GameObject:
   m_ObjectHideFlags: 0

@@ -4265,6 +4265,10 @@ PrefabInstance:
       value: HumanMiniBoss (1)
       objectReference: {fileID: 0}
     - target: {fileID: 412340616308351125, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+      propertyPath: HP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 412340616308351125, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1250062163}
@@ -4307,6 +4311,14 @@ PrefabInstance:
     - target: {fileID: 1800003005464733085, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001163921870929765, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+      propertyPath: m_Value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001163921870929765, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
+      propertyPath: m_MaxValue
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8720613797382766297, guid: 12046f88bb3f8e240acb55be354ffecf, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10728,7 +10740,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
@@ -15664,6 +15676,14 @@ PrefabInstance:
     - target: {fileID: 6551063118795059022, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515189062512305528, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+      propertyPath: m_Value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515189062512305528, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
+      propertyPath: m_MaxValue
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8046221736271890138, guid: 235f732c830aae148b93cf15b162e7e2, type: 3}
       propertyPath: damage
@@ -26352,7 +26372,6 @@ GameObject:
   - component: {fileID: 1713662715}
   - component: {fileID: 1713662714}
   - component: {fileID: 1713662713}
-  - component: {fileID: 1713662712}
   - component: {fileID: 1713662711}
   m_Layer: 0
   m_Name: GateTrigger
@@ -26373,32 +26392,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5ec74bf8bc62b439f779e2ddec8406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeleteGates
+  GameController: {fileID: 0}
   controller: {fileID: 1837714843}
   gate1: {fileID: 1805663500}
   gate2: {fileID: 1173148676}
   gate3: {fileID: 1399657957}
   gate4: {fileID: 1096632789}
---- !u!65 &1713662712
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713662710}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1713662713
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28178,7 +28177,7 @@ GameObject:
   - component: {fileID: 1837714843}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

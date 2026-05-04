@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 35162642043357888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.051, y: 1.1339084, z: 0.437}
+  m_LocalPosition: {x: -0.051, y: 0.695, z: 0.437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce20798b7de32e0479a3471b9f99037c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 30
 --- !u!1 &110516741271414713
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +799,7 @@ MonoBehaviour:
   mySource: {fileID: -3874042381983916117}
   EnemyHitSound: {fileID: 8300000, guid: fdf66306b04b135469d3d0ab0c6baaed, type: 3}
   AttackSound: {fileID: 8300000, guid: 6799da1dd72dc0e4ca57a4137fe0870a, type: 3}
+  canFlinch: 1
 --- !u!65 &6610653222011079750
 BoxCollider:
   m_ObjectHideFlags: 0

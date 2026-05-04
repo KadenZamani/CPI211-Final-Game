@@ -1547,7 +1547,7 @@ Transform:
   m_GameObject: {fileID: 2625039855518026132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.72, z: 0.215}
+  m_LocalPosition: {x: -0, y: 0.72, z: 0.384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2889,12 +2889,13 @@ MonoBehaviour:
   attack: {fileID: 2625039855518026132}
   HP: 100
   chaseRange: 8
-  attackRange: 1.4
-  attackCooldownMax: 4
+  attackRange: 1.2
+  attackCooldownMax: 3
   isPerformingAction: 0
   mySource: {fileID: 2019644962966050835}
   EnemyHitSound: {fileID: 8300000, guid: fdf66306b04b135469d3d0ab0c6baaed, type: 3}
   AttackSound: {fileID: 8300000, guid: 6799da1dd72dc0e4ca57a4137fe0870a, type: 3}
+  canFlinch: 1
 --- !u!82 &2019644962966050835
 AudioSource:
   m_ObjectHideFlags: 0

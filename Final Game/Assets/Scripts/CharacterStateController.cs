@@ -255,7 +255,7 @@ public class CharacterStateController : MonoBehaviour
     {
         if (other.CompareTag("Portal"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("BossFight");
         }
 
         if (other.CompareTag("EnemyAttack") && !isGettingHit && !isDying && currentAction != ActionState.Blocking) 

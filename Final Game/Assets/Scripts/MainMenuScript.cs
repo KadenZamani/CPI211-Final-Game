@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.EventSystems;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -13,11 +12,38 @@ public class MainMenuScript : MonoBehaviour
     public string playSceneName = "IntroScreen";
     public string controlsSceneName = "ControlsScreen";
 
+    [Header("Colors")]
+    public Color normalColor = Color.white;
+    public Color hoverColor = Color.yellow;
+
     void Update()
     {
+        CheckHover();
+
         if (Input.GetMouseButtonDown(0))
         {
             CheckClick();
+        }
+    }
+
+    void CheckHover()
+    {
+        Vector2 mousePos = Input.mousePosition;
+
+        // Reset colors
+        playText.color = normalColor;
+        controlsText.color = normalColor;
+
+        // Highlight hovered option
+        if (RectTransformUtility.RectangleContainsScreenPoint(
+            playText.rectTransform, mousePos, null))
+        {
+            playText.color = hoverColor;
+        }
+        else if (RectTransformUtility.RectangleContainsScreenPoint(
+            controlsText.rectTransform, mousePos, null))
+        {
+            controlsText.color = hoverColor;
         }
     }
 

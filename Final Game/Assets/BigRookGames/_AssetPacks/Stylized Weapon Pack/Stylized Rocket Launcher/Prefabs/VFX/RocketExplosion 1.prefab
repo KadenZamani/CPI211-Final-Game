@@ -34508,7 +34508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce20798b7de32e0479a3471b9f99037c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 10
+  damage: 20
 --- !u!135 &-2843787954658033033
 SphereCollider:
   m_ObjectHideFlags: 0

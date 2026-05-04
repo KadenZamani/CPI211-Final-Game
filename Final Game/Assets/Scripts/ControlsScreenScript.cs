@@ -10,7 +10,7 @@ public class ControlsScreenScript : MonoBehaviour
 
     void GoToGameScene()
     {
-        SceneManager.LoadScene("IntroScreen");
+        SceneManager.LoadScene("MainMenu");
     }
 
 

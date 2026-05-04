@@ -182,6 +182,15 @@ public class CharacterStateController : MonoBehaviour
         
     }
 
+    public void GainHealth(float healAmount)
+    {
+        playerHealth += (int)healAmount;
+        if (playerHealth > 100)
+        {
+            playerHealth = 100;
+        }
+    }
+
     IEnumerator PerformAttack(float duration)
     {
         isPerformingAction = true;

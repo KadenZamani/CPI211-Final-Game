@@ -13,10 +13,11 @@ public class TreasureChest : MonoBehaviour
 
     [Header("Healing")]
     public float healAmount = 25f;
+    public float healDelay = 1.5f;
     public bool healOnlyOnce = true;
-    public float healDelay = 1.5f; // delay in seconds
 
     private Animator animator;
+
     private bool isOpen = false;
     private bool hasHealed = false;
     private bool isHealing = false;
@@ -28,39 +29,60 @@ public class TreasureChest : MonoBehaviour
 
     void Update()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, openRadius, detectionLayer);
-        bool shouldOpen = hits.Length > 0;
+        Collider[] hits =
+            Physics.OverlapSphere(transform.position, openRadius, detectionLayer);
 
-        if (shouldOpen != isOpen)
-        {
-            isOpen = shouldOpen;
-            animator.SetBool(openParameter, isOpen);
-        }
+        bool shouldOpen = false;
+        CharacterStateController validPlayer = null;
 
-        // Start delayed heal
-        if (shouldOpen && !isHealing && (!healOnlyOnce || !hasHealed))
+        foreach (Collider hit in hits)
         {
-            foreach (var hit in hits)
+            CharacterStateController controller =
+                hit.GetComponent<CharacterStateController>();
+
+            if (controller != null && controller.hasKey())
             {
-                var controller = hit.GetComponent<CharacterStateController>();
-                if (controller != null)
+                shouldOpen = true;
+                validPlayer = controller;
+
+                // Open only if player with key is nearby
+                if (shouldOpen != isOpen)
                 {
-                    StartCoroutine(HealAfterDelay(controller));
-                    isHealing = true;
-                    break;
+                    isOpen = shouldOpen;
+                    animator.SetBool(openParameter, isOpen);
                 }
+
+                // Heal after opening
+                if (shouldOpen &&
+                    validPlayer != null &&
+                    !isHealing &&
+                    (!healOnlyOnce || !hasHealed))
+                {
+                    StartCoroutine(HealAfterDelay(validPlayer));
+                    isHealing = true;
+                    controller.useKey();
+                }
+                break;
             }
         }
     }
 
-    IEnumerator HealAfterDelay(CharacterStateController controller)
+    IEnumerator HealAfterDelay(CharacterStateController player)
     {
         yield return new WaitForSeconds(healDelay);
 
-        if (controller != null)
+        if (player != null)
         {
-            controller.GainHealth(healAmount);
-            hasHealed = true;
+            float dist = Vector3.Distance(
+                transform.position,
+                player.transform.position
+            );
+
+            if (dist <= openRadius)
+            {
+                player.GainHealth(healAmount);
+                hasHealed = true;
+            }
         }
 
         isHealing = false;

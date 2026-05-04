@@ -31,7 +31,8 @@ public class CharacterStateController : MonoBehaviour
     private float lastUsedTime;
     private Coroutine regenCoroutine;
     private int damageDealtToPlayer = 0;
-     public Animator anim;
+    private int numKeys = 0;
+    public Animator anim;
     public GameObject PlayerAttack;
     public AudioSource mySource;
     public AudioClip PlayerAttackSound;
@@ -53,6 +54,25 @@ public class CharacterStateController : MonoBehaviour
         healthBar.value = playerHealth;
        
 
+    }
+
+    public void addKey()
+    {
+        numKeys += 1;
+    }
+
+    public void useKey()
+    {
+        numKeys -= 1;
+        if (numKeys < 0)
+        {
+            numKeys = 0;
+        }
+    }
+
+    public bool hasKey()
+    {
+        return numKeys > 0;
     }
 
     void PlayAttackSound()

@@ -269,8 +269,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The timelines have collapsed. \n\nWorlds from past, present, and future
-    have been merged into chaos. \n\nThe three guardians hold the keys to the castle.\n\n
-    Defeat them. Open the gates and challenge the great foe from beyond this realm."
+    have been merged into chaos. \n\nSlay the three guardians to gain entry into
+    the castle.\n\nDefeat them. Open the gates and challenge the great foe from beyond
+    this realm."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

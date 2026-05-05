@@ -11,8 +11,7 @@ public class DeleteGates : MonoBehaviour
     public GameObject gate4;
     void Start()
     {
-        GameController = GameObject.FindWithTag("GameController"); 
-        controller = GameController.GetComponent<GameControllerScript>();
+        controller = GameControllerScript.Instance;
         gate3.SetActive(false);
         gate4.SetActive(false);
     }
@@ -24,7 +23,7 @@ public class DeleteGates : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (controller.key1 && controller.key2 && controller.key3)
         {

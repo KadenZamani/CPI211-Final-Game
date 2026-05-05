@@ -11,18 +11,25 @@ public enum ActionState { None, Blocking, Attacking, GettingHit, Dying }
 
 public class CharacterStateController : MonoBehaviour
 {
-    
     public MoveState currentMove = MoveState.Idle;
     public ActionState currentAction = ActionState.None;
+
     [SerializeField] public FadeScript fader;
     [SerializeField] public CameraController cam;
     public ThirdPersonController ScriptReference;
+
     private bool isPerformingAction = false;
     private bool isGettingHit = false;
     private bool isDying = false;
+
     public bool attackHitboxActive = false;
+
     public Slider healthBar;
+    public Image healthFillImage;   // Assign the Fill image in Inspector
+    private Color normalHealthColor;
+
     private int playerHealth = 100;
+
     public Slider staminaBar;
     private float stamina = 100;
     private float maxStamina = 100;
@@ -30,10 +37,13 @@ public class CharacterStateController : MonoBehaviour
     private float regenRate = 20f;
     private float lastUsedTime;
     private Coroutine regenCoroutine;
+
     private int damageDealtToPlayer = 0;
     private int numKeys = 0;
+
     public Animator anim;
     public GameObject PlayerAttack;
+
     public AudioSource mySource;
     public AudioClip PlayerAttackSound;
     public AudioClip GetHitSound;
@@ -43,17 +53,19 @@ public class CharacterStateController : MonoBehaviour
     public AudioClip SprintSound;
 
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
+
         staminaBar.maxValue = 100;
         staminaBar.value = stamina;
+
         healthBar.maxValue = 100;
         healthBar.value = playerHealth;
        
-
+        if (healthFillImage != null)
+            normalHealthColor = healthFillImage.color;
     }
 
     public void addKey()
@@ -205,10 +217,32 @@ public class CharacterStateController : MonoBehaviour
     public void GainHealth(float healAmount)
     {
         playerHealth += (int)healAmount;
+
         if (playerHealth > 100)
-        {
             playerHealth = 100;
+
+        healthBar.value = playerHealth;
+
+        if (healthFillImage != null)
+            StartCoroutine(FlashHealthGreen());
+    }
+
+    IEnumerator FlashHealthGreen()
+    {
+        healthFillImage.color = Color.green;
+
+        yield return new WaitForSeconds(0.2f);
+
+        float t = 0f;
+        while (t < 4f)
+        {
+            t += Time.deltaTime;
+            healthFillImage.color =
+                Color.Lerp(Color.green, normalHealthColor, t / 4f);
+            yield return null;
         }
+
+        healthFillImage.color = normalHealthColor;
     }
 
     IEnumerator PerformAttack(float duration)

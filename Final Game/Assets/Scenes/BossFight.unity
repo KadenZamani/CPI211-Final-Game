@@ -1448,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b831477eb2f55242a340994780d407b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 319.4
+      value: 343.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b831477eb2f55242a340994780d407b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1456,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b831477eb2f55242a340994780d407b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 202.5
+      value: 146.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b831477eb2f55242a340994780d407b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   healthBar: {fileID: 1116820860}
   attack: {fileID: 910878272}
   HP: 400
-  chaseRange: 100
+  chaseRange: 1000
   attackRange: 6
   attackCooldownMax: 6
   isPerformingAction: 0
@@ -3570,6 +3570,7 @@ MonoBehaviour:
   ScriptReference: {fileID: 1672586809}
   attackHitboxActive: 0
   healthBar: {fileID: 1854535404}
+  healthFillImage: {fileID: 0}
   staminaBar: {fileID: 1134533860}
   anim: {fileID: 1672586805}
   PlayerAttack: {fileID: 472576395}
@@ -4494,6 +4495,7 @@ MonoBehaviour:
   ScriptReference: {fileID: 2136894497}
   attackHitboxActive: 0
   healthBar: {fileID: 1854535404}
+  healthFillImage: {fileID: 0}
   staminaBar: {fileID: 1134533860}
   anim: {fileID: 2136894499}
   PlayerAttack: {fileID: 778214627}

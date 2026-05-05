@@ -1,10 +1,10 @@
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
+// using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+// using static UnityEditor.Progress;
 
 public enum MoveState { Idle, Walking, Sprinting }
 public enum ActionState { None, Blocking, Attacking, GettingHit, Dying }
